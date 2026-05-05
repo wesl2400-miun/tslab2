@@ -26,6 +26,7 @@ export class TodoList {
   }
 
   public addTodo = (
+    action: string,
     index: number,
     task: string,
     completed: boolean, 
@@ -35,11 +36,16 @@ export class TodoList {
       priority, date, this.setMsg);
     if(!isValid) return false;
     const backup = [...this.todos];
-    if(ACTION.ADD_TODO) this.add(
-      task, priority, date);
-    else if(ACTION.EDIT_TODO) this.edit(
-      index, task, completed, 
-      priority, date);
+    switch(action) {
+      case ACTION.ADD_TODO:
+        this.add(task, 
+          priority, date);
+        break;
+      case ACTION.EDIT_TODO:
+        this.edit(index, task, 
+          completed, priority, date);
+        break;
+    }
     try {
       this.saveToLocalStorage();
       this.setMsg(MESSAGE
