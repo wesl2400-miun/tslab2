@@ -4,7 +4,5 @@ export interface MessageI {
   INVALID_DATE: string,
   INVALID_PRIO: string,
   STORAGE_FAIL: string,
-  TODO_ADDED: string,
-  TODO_EDITED: string,
-  TODO_COMPLETE: string
+  TODO_SAVED: string
 }

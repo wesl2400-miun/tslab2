@@ -8,12 +8,11 @@ export class Todo implements TodoI {
   public date: string;
 
   constructor(task: string,
-    completed: boolean, 
     priority: string, 
     date: string) {
       this.index = -1;
       this.task = task;
-      this.completed = completed;
+      this.completed = false;
       this.priority = priority;
       this.date = date;
   }

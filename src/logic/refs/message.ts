@@ -6,7 +6,5 @@ export const MESSAGE: Readonly<MessageI> = {
   INVALID_DATE: '* FEL: Ogiltigt datum',
   INVALID_PRIO: '*FEL: Ogiltigt prioritetvärde',
   STORAGE_FAIL: '* FEL: LocalSotrage har misslyckats',
-  TODO_ADDED: '* KLART: Att-göra uppgiften har lagts till listan',
-  TODO_EDITED: '* KLART: Att-göra uppgiften har redigerats',
-  TODO_COMPLETE: '* KLART: Att-göra uppgiften har markerats som utförd'
+  TODO_SAVED: '* KLART: Att-göra-listan har uppdaterats',
 }

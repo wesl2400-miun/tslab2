@@ -50,6 +50,5 @@ export const valTodo = (task: string,
       .INVALID_DATE);
     return false;
   }
-  setMsg(MESSAGE.TODO_ADDED);
   return true; 
 }
