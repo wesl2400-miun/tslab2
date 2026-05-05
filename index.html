@@ -17,31 +17,33 @@
       <section>
         <h2>Lägg till en att-göra uppgift</h2>
         <form>
-          <label for="course-code">Att göra</label>
-          <input type="text" name="course-code" id="course-code" placeholder="dt207g">
+          <label for="todo-name">Att göra</label>
+          <input type="text" name="todo-name" id="todo-name" placeholder="Gå ut med hunden Fluffy">
 
-          <label for="course-name">Prioritet</label>
-          <input type="text" name="course-name" id="course-name" placeholder="Backend-baserad webbutveckling">
+          <label for="todo-prio">Prioritet</label>
+          <select name="todo-prio" id="todo-prio">
+            <option value="1">Hög</option>
+            <option value="2">Normal</option>
+            <option value="3">Låg</option>
+          </select>
           
-          <label for="course-prog">Progression</label>
-          <input type="text" name="course-prog" id="course-prog" placeholder="A">
-
-          <label for="course-syll">Syllabus</label>
-          <input type="text" name="course-syll" id="course-syll" placeholder="http://localhost:5173/">
+          <label for="todo-date">Klart senast (YYYY-MM-DD)</label>
+          <input type="text" name="todo-date" id="todo-date" placeholder="2026-05-03">
 
           <input id="add-btn" type="submit" value="Lägg till">
           <p id="add-msg"></p>
         </form>
       </section>
       <section>
-        <h2>Kursöversikt</h2>
-        <p>Här visas kurser som du har lagt till.</p>
-        <ul id="course-list">
+        <h2>Att-göra lista</h2>
+        <p>Här visas de att-göra-uppgifter som du har lagt till.</p>
+        <ul id="todo-list">
           <!-- Elementen i listan genereras dynamiskt -->
         </ul>
       </section>
+      <ul id="test"></ul>
     </main>
     <!-- Kör appens huvudfunktionalitet -->
-    <script type="module" src="./src/ui/views/main-view.ts"></script>
+    <script type="module" src="./src/ui/pages/main-page.ts"></script>
   </body>
 </html>

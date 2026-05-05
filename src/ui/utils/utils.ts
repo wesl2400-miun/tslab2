@@ -15,3 +15,21 @@ export const newNode = (type: string,
   parent.appendChild(elmnt);
   return elmnt;
 }
+
+// Skapa en kryssruta
+export const checkbox = (
+  parent: HTMLElement, 
+  title: string, 
+  id: string): HTMLInputElement => {
+  const form = newNode(
+    'form', parent, null);
+  form.classList.add('checkbox');
+  const input = newNode('input', 
+    form, null) as HTMLInputElement;
+  input.type = 'checkbox';
+  input.id = id;
+  input.name = id;
+  const label = newNode('label', form, title);
+  label.setAttribute('for', id);
+  return input;
+}

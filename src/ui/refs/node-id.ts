@@ -1,11 +1,11 @@
+import type { NodeIdI } from "../interface/NodeIdI";
 
 // Referenser till redan existerande HTML-element
-export const NODE_ID: Readonly<any> = {
-  COURSE_CODE: 'course-code',
-  COURSE_NAME: 'course-name',
-  COURSE_PROG: 'course-prog',
-  COURSE_SYLL: 'course-syll',
+export const NODE_ID: Readonly<NodeIdI> = {
+  TODO_NAME: 'todo-name',
+  TODO_PRIO: 'todo-prio',
+  TODO_DATE: 'todo-date',
   ADD_BTN: 'add-btn',
   ADD_MSG: 'add-msg',
-  COURSE_LIST: 'course-list'
+  TODO_LIST: 'todo-list'
 };
