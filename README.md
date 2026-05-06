@@ -54,4 +54,4 @@ nämligen veta om listan har uppdateras och sparats i webbläsaren eller inte.
 Av den anledning lade jag till trySave() funktionen till min TodoList klass och
 lät saveToLocalStorage() funktionen köra inuti try och catch blocket. 
 
-### Länken till webbplatsen -> https://wesl2400-miun.github.io/tslab1/
+### Länken till webbplatsen -> https://wesl2400-miun.github.io/tslab2/
