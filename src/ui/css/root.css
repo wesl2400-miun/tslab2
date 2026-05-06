@@ -178,9 +178,6 @@ li p:first-of-type {
 
 /* Stilmallen för kryssrutan */
 .checkbox {
-  position: relative;
-  top: -70px;
-  left: 260px;
   display: flex;
   width: 100%;
   box-sizing: border-box;
@@ -222,13 +219,11 @@ form .error {
 
 /* Stilmallen för 'klart'-markeringen */
 .completed {
-  position: relative;
-  top: -60px;
-  left: 330px;
   background-color: var(--success);
   color: var(--on-primary);
   padding: 0.5rem 1rem;
   border-radius: 5px;
+  margin: 1rem 0;
   border: 2px solid var(--on-primary);
   outline: 2px double var(--on-primary);
   outline-offset: 5px;
