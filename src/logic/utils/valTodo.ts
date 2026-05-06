@@ -12,7 +12,7 @@ const valTask = (
   if(task.trim().length === 0)
     return false;
   return task.length <= MAX_CHAR 
-    && task.length > MIN_CHAR;
+    && task.length >= MIN_CHAR;
 }
 
 // Validerar todo-prioriteten
