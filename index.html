@@ -15,10 +15,14 @@
       <h1>Laboration 2</h1>
       <!-- Formuläret som styrs dynamiskt från main-view.ts -->
       <section>
-        <h2 id="ftodo-title">Lägg till en att-göra uppgift</h2>
+        <h2>Lägg till en att-göra uppgift</h2>
         <form>
           <label for="todo-name">Att göra</label>
-          <input type="text" name="todo-name" id="todo-name" placeholder="Gå ut med hunden Fluffy">
+          <input type="text" 
+            name="todo-name" 
+            id="todo-name" 
+            placeholder="Gå ut med hunden Fluffy"
+            maxlength="36">
 
           <label for="todo-prio">Prioritet</label>
           <select name="todo-prio" id="todo-prio">

@@ -36,8 +36,7 @@ export class TodoList {
     const todo: TodoI = new Todo(
       task, false, priority, date);
     this.todos.push(todo);
-    todo.index = this.todos
-      .indexOf(todo);
+    this.updateIndexes();
     return this.trySave(backup);
   }
 
@@ -92,11 +91,15 @@ export class TodoList {
     const backup = [...this.todos];
     this.todos = this.todos.filter(todo => 
       todo.index !== index);
+    this.updateIndexes();
+    return this.trySave(backup);
+  }
+  
+  private updateIndexes = (): void => {
     const len = this.todos.length;
     for(let i = 0; i < len; i++) {
       this.todos[i].index = i;
     }
-    return this.trySave(backup);
   }
 
   private saveToLocalStorage = (): 

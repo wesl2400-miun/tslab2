@@ -46,10 +46,11 @@ export class TodoV {
   }
 
   private initComp = (index: number): void => {
-    const comp = newNode('p',
-      this.root,'KLART');
+    const comp: HTMLElement = 
+      newNode('p',this.root,'KLART');
     comp.classList.add('completed');
-    const msg = newNode('p', this.root, null);
+    const msg: HTMLElement = 
+      newNode('p', this.root, null);
     msg.classList.add('error');
     this.wireActBtn(ACTION.REMOVE_TODO, 
       this.root, () => {
@@ -58,9 +59,10 @@ export class TodoV {
   }
 
   private onRemove = (
-    index: number, msg: HTMLElement): void => {
-    const success = this.todoList
-      .remove(index);
+    index: number, 
+    msg: HTMLElement): void => {
+    const success: boolean = 
+      this.todoList.remove(index);
     if(success) {
       this.parent.removeChild(this.root);    
     } else {
@@ -72,14 +74,17 @@ export class TodoV {
   public tForm = (): TFormI => {
     const { index, task,
       priority, date } = this.todo;
-    const form = newNode('form', 
-      this.root, null);
+    const form: HTMLElement = 
+      newNode('form', this.root, null);
     form.classList.add('form-edit');
-    const taskInp = textfield(form,
+    const taskInp: HTMLInputElement = 
+      textfield(form, 
       `${index}edit-inp`, task);
-    const prioSel = selectbox(`${index}sel-opts`,
-      form, ['Hög', 'Normal', 'Låg'], priority);
-    const dateInp = textfield(form,
+    const prioSel: HTMLInputElement = 
+      selectbox(`${index}sel-opts`, form, 
+        ['Hög', 'Normal', 'Låg'], priority);
+    const dateInp: HTMLInputElement = 
+      textfield(form,
       `${index}edit-inp`, date);
     return { form, taskInp, 
       prioSel, dateInp };
@@ -90,7 +95,8 @@ export class TodoV {
     newNode('h3', this.root, 'Redigera');
     const { form, taskInp, 
       prioSel, dateInp } = this.tForm();
-    const msg = newNode('p', form, null);
+    const msg: HTMLElement = 
+      newNode('p', form, null);
     msg.classList.add('error');
     this.wireActBtn(ACTION.READ_TODO, 
       this.root, () => {
@@ -105,9 +111,10 @@ export class TodoV {
     prioSel: HTMLInputElement,
     dateInp: HTMLInputElement): void => {
     const { index, completed} = this.todo;
-    const success = this.todoList.edit(
-      index, taskInp.value, completed,
-      prioSel.value, dateInp.value);
+    const success: boolean = 
+      this.todoList.edit(index, 
+        taskInp.value, completed,
+        prioSel.value, dateInp.value);
     this.todo = this.todoList
       .getTodos()[index];
     if(success) {
@@ -123,8 +130,9 @@ export class TodoV {
     parent: HTMLElement,
     index: number,
     completed: boolean): void => {
-    const compCheck = checkbox(
-      wrapType, parent, 'Markera som klart', 
+    const compCheck: HTMLInputElement = 
+      checkbox(wrapType, parent, 
+        'Markera som klart', 
       `${index}comp-check`);
     compCheck.checked = completed;
     compCheck.addEventListener(
@@ -141,7 +149,7 @@ export class TodoV {
     action: string,
     parent: HTMLElement,
     onClick: () => void): void => {
-    let actBtn = null;
+    let actBtn: any = null;
     switch(action) {
       case ACTION.EDIT_TODO:
         actBtn = newNode(
@@ -166,6 +174,4 @@ export class TodoV {
       onClick();
     });
   }
-
-  
 }

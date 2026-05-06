@@ -1,8 +1,8 @@
 import { toPrio } from "../../logic/utils/toPrio";
 
 // Hämta ett existerande HTML-element
-export const node = (ref: string): 
-  HTMLInputElement | HTMLElement | null => {
+export const node = (ref: string): HTMLInputElement 
+  | HTMLElement | HTMLButtonElement | null => {
     return document.getElementById(ref);
 }
 

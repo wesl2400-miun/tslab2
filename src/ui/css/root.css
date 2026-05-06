@@ -208,7 +208,8 @@ li p:first-of-type {
   border-bottom: 1px solid var(--primary-variant);
 }
 
-.form-edit .error {
+.form-edit .error,
+form .error {
   color: var(--error);
   font-size: 1rem;
   font-weight: 400;

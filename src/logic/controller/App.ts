@@ -14,9 +14,9 @@ export class App {
     this.views.push(view);
   }
 
-  refresh = (): void => {
+  init = (): void => {
     this.views.forEach(view => {
-      view.refresh(this.todoList);
+      view.init(this.todoList);
     })
   }
 }
