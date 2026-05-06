@@ -1,4 +1,5 @@
 
+// Definierar strukturen för identifikatorer som referar existerande element
 export interface NodeIdI {
   TODO_NAME: string,
   TODO_PRIO: string,

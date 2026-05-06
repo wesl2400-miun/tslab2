@@ -2,6 +2,8 @@ import { TodoList } from "../../logic/feature/TodoList.ts";
 import type { ViewI } from "../interface/ViewI.ts";
 import { TodoV } from "./TodoV.ts";
 
+// Visar listan av att-göra-uppgifter och
+// hanterar logiken bakom tilläggning av nya todos
 export class TodoListV implements ViewI {
   private root: HTMLElement;
   private addMsg: HTMLElement;
@@ -25,6 +27,7 @@ export class TodoListV implements ViewI {
     this.tDateInp = tDateInp;
   }
 
+  // Uppdatera todo-listan
   private update = (todoList: TodoList) => {
     this.root.innerHTML = '';
     todoList.getTodos().forEach(todo => {
@@ -32,13 +35,19 @@ export class TodoListV implements ViewI {
     });
   }
 
+  // Initiera todo-element och gör lägg-till-formuläret interaktivt
   public init = (todoList: TodoList): void => {
     this.update(todoList);
+    this.wireAddBtn(todoList);
+  }
+
+  // Lägg till en att-göra-uppgift när addBtn-knappen klickas
+  private wireAddBtn = (todoList: TodoList): void => {
     this.addBtn.addEventListener('click', (event) => {
       event.preventDefault();
       const success = todoList.addTodo(
         this.tNameInp.value, 
-        this.tPrioInput.value,
+        Number(this.tPrioInput.value),
         this.tDateInp.value);
       if(success) {
         this.update(todoList);

@@ -2,9 +2,10 @@ import { checkbox, newNode, selectbox, textfield } from "../utils/utils.ts";
 import type { TodoI } from "../../logic/interface/TodoI.ts";
 import { toPrio } from "../../logic/utils/toPrio.ts";
 import type { TodoList } from "../../logic/feature/TodoList.ts";
-import { ACTION } from "../../logic/refs/action.ts";
+import { ACTION } from "../refs/action.ts";
 import type { TFormI } from "../interface/TFormI.ts";
 
+// Hanterar ett todo-element
 export class TodoV {
   private parent: HTMLElement;
   private root: HTMLElement;
@@ -24,6 +25,7 @@ export class TodoV {
     this.initRead();
   }
 
+  // Visa informationen om en specifik att-göra-uppgift
   public initRead = (): void => {
     this.root.innerHTML = '';
     const { index, task, completed, 
@@ -45,6 +47,8 @@ export class TodoV {
     }
   }
 
+  // Om att-göra-uppgift är klar visa
+  // 'klart'-överskrift och initiera ta-bort-knappen
   private initComp = (index: number): void => {
     const comp: HTMLElement = 
       newNode('p',this.root,'KLART');
@@ -58,6 +62,7 @@ export class TodoV {
     });
   }
 
+  // Ta bort ett todo-element
   private onRemove = (
     index: number, 
     msg: HTMLElement): void => {
@@ -71,6 +76,7 @@ export class TodoV {
     }
   }
 
+  // Returnera ett redigeringsformulär
   public tForm = (): TFormI => {
     const { index, task,
       priority, date } = this.todo;
@@ -90,6 +96,7 @@ export class TodoV {
       prioSel, dateInp };
   }
 
+  // Visa redigeringsformuläret
   public initEdit = (): void => {
     this.root.innerHTML = '';
     newNode('h3', this.root, 'Redigera');
@@ -105,6 +112,7 @@ export class TodoV {
     });
   }
 
+  // Redigera ett todo-element
   private onEdit = (
     msg: HTMLElement,
     taskInp: HTMLInputElement,
@@ -114,7 +122,8 @@ export class TodoV {
     const success: boolean = 
       this.todoList.edit(index, 
         taskInp.value, completed,
-        prioSel.value, dateInp.value);
+        Number(prioSel.value), 
+        dateInp.value);
     this.todo = this.todoList
       .getTodos()[index];
     if(success) {
@@ -125,6 +134,7 @@ export class TodoV {
     }
   } 
 
+  //Låt kryssrutan markera todos som klara
   private wireCheckbox = (
     wrapType: string,
     parent: HTMLElement,
@@ -145,6 +155,8 @@ export class TodoV {
     });
   }
 
+  // Skapa en knapp beroende på den nuvarande 
+  // vyns specificerade åtgärd
   private wireActBtn = (
     action: string,
     parent: HTMLElement,

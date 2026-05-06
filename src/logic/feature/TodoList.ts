@@ -13,20 +13,23 @@ export class TodoList {
     this.todos = [];
     this.loadFromLocalStorage();
     this.message = '';
-    console.log(this.todos);
   }
 
+  // Hämta todo-listan
   public getTodos = (): Todo[] => this.todos;
 
+  // Hämta statusen för den nuvarande åtgärden
   public getMsg = () => this.message;
 
+  // Uppdatera statusen för den nuvarande åtgärden
   public setMsg = (msg: string) => {
     this.message = msg;
   }
 
+  // Lägg till en att-göra-uppgift i todo-listan
   public addTodo = (
     task: string,
-    priority: string, 
+    priority: number, 
     date: string): boolean => {
     const isValid: boolean = valTodo(task, 
       priority, date, this.setMsg);
@@ -59,6 +62,7 @@ export class TodoList {
     }
   }
 
+  // Markera en att-göra-uppgift som klar
   public markTodoCompleted = (
     todoIndex: number): void => {
     const backup: TodoI[] = 
@@ -68,11 +72,12 @@ export class TodoList {
     this.trySave(backup);
   }
 
+  // Redigera en vald att-göra-uppgift
   public edit = (
     index: number,
     task: string,
     completed: boolean,
-    priority: string,
+    priority: number,
     date: string
   ): boolean => {
     const isValid: boolean = valTodo(task, 
@@ -86,6 +91,7 @@ export class TodoList {
     return this.trySave(backup);
   }
 
+  // Ta bort en vald att-göra-uppgift
   public remove = (
     index: number): boolean => {
     const backup = [...this.todos];
@@ -95,6 +101,8 @@ export class TodoList {
     return this.trySave(backup);
   }
   
+
+  // Uppdatera indexvärdena för alla att-göra-uppgufter
   private updateIndexes = (): void => {
     const len = this.todos.length;
     for(let i = 0; i < len; i++) {
@@ -102,12 +110,14 @@ export class TodoList {
     }
   }
 
+  // Lagra todo-listan i localStorage
   private saveToLocalStorage = (): 
     void => {
     save(MEMORY.TODO_LIST, 
       this.todos);
   }
 
+  // Ladda upp todo-listan från localStorage
   private loadFromLocalStorage = (): 
     void => {
     this.todos = load(

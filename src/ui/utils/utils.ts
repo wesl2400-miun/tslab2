@@ -54,7 +54,7 @@ export const selectbox = (
   id: string,
   parent: HTMLElement,
   options: string[],
-  selOpt: string
+  selOpt: number
 ): HTMLInputElement => {
   const select = newNode(
     'select', parent, 
