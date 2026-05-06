@@ -35,8 +35,19 @@ export class TodoListV implements ViewI {
     });
   }
 
-  // Initiera todo-element och gör lägg-till-formuläret interaktivt
+  // Initiera todo-element
+  // Rensa addMsg-meddelandet 
+  // när något av inmatningsfält fokuseras
+  // Gör lägg-till-formuläret interaktivt
   public init = (todoList: TodoList): void => {
+    const inputs = [this.tNameInp, 
+      this.tPrioInput, this.tDateInp];
+    inputs.forEach(input => {
+      input.addEventListener('focus', () => {
+        console.log('henlo')
+        this.addMsg.innerHTML = '';
+      });
+    });
     this.update(todoList);
     this.wireAddBtn(todoList);
   }
