@@ -62,6 +62,7 @@ export class TodoListV implements ViewI {
         this.tDateInp.value);
       if(success) {
         this.update(todoList);
+        this.root.scrollIntoView();
       } else {
         this.addMsg.textContent = 
           todoList.getMsg();
