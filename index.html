@@ -15,7 +15,7 @@
       <h1>Laboration 2</h1>
       <!-- Formuläret som styrs dynamiskt från main-view.ts -->
       <section>
-        <h2>Lägg till en att-göra uppgift</h2>
+        <h2 id="ftodo-title">Lägg till en att-göra uppgift</h2>
         <form>
           <label for="todo-name">Att göra</label>
           <input type="text" name="todo-name" id="todo-name" placeholder="Gå ut med hunden Fluffy">
@@ -32,7 +32,7 @@
 
           <input id="add-btn" type="submit" value="Lägg till">
 
-          <p id="add-msg"></p>
+          <p class="error" id="add-msg"></p>
         </form>
       </section>
       <section>

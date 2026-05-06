@@ -1,12 +1,16 @@
-import { Todo } from "../../logic/model/Todo.ts";
+import { App } from "../../logic/controller/App.ts";
+import { TodoList } from "../../logic/feature/TodoList.ts";
+import { NODE_ID } from "../refs/node-id.ts";
 import { node } from "../utils/utils.ts";
-import { TodoView } from "../views/TodoView.ts";
+import { TodoListV } from "../views/TodoListV.ts";
 
 
+const tListNode = node(
+  NODE_ID.TODO_LIST) as HTMLElement;
+const todoList = new TodoList();
 
-
-const test = node('test') as HTMLElement;
-new TodoView(test, new Todo(
-  'Gå ut med hunden Fluffy',
-  '1',
-  '2026-06-01'), 0);
+const app = new App(todoList);
+console.log(tListNode)
+const todoListV = new TodoListV(tListNode);
+app.addView(todoListV);
+app.refresh();

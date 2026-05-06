@@ -1,7 +1,7 @@
 import type { TodoI } from "../interface/TodoI.ts";
 import { Todo } from "../model/Todo.ts";
 import { MEMORY } from "../refs/memory.ts";
-import { MESSAGE } from "../refs/message.ts";
+import { ERROR } from "../refs/error.ts";
 import { load, save } from "../utils/storage.ts";
 import { valTodo } from "../utils/valTodo.ts";
 
@@ -34,7 +34,7 @@ export class TodoList {
     const backup: TodoI[] 
       = [...this.todos];
     const todo: TodoI = new Todo(
-      task, priority, date);
+      task, false, priority, date);
     this.todos.push(todo);
     todo.index = this.todos
       .indexOf(todo);
@@ -50,13 +50,11 @@ export class TodoList {
     backup: TodoI[]): boolean => {
     try {
       this.saveToLocalStorage();
-      this.setMsg(MESSAGE
-        .TODO_SAVED);
       return true;
     } catch(err: any) {
       this.todos = backup;
       console.error(err.message);
-      this.setMsg(MESSAGE
+      this.setMsg(ERROR
         .STORAGE_FAIL);
       return false;
     }
@@ -74,13 +72,30 @@ export class TodoList {
   public edit = (
     index: number,
     task: string,
+    completed: boolean,
     priority: string,
     date: string
   ): boolean => {
+    const isValid: boolean = valTodo(task, 
+      priority, date, this.setMsg);
+    if(!isValid) return false;
     const backup: TodoI[] = 
       [...this.todos];
     this.todos[index] = new Todo(
-      task, priority, date);
+      task, completed, priority, date);
+    this.todos[index].index = index;
+    return this.trySave(backup);
+  }
+
+  public remove = (
+    index: number): boolean => {
+    const backup = [...this.todos];
+    this.todos = this.todos.filter(todo => 
+      todo.index !== index);
+    const len = this.todos.length;
+    for(let i = 0; i < len; i++) {
+      this.todos[i].index = i;
+    }
     return this.trySave(backup);
   }
 

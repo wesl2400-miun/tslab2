@@ -8,6 +8,8 @@
   --on-background: #595959;
   --surface: #e0e0e0;
   --on-primary: white;
+  --error: #790C0C;
+  --success: #24602A;
   color: var(--on-surface);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
@@ -80,7 +82,7 @@ form {
 
 /* Stilen för inmatningsfält och knappar */
 input[type='text'],
-input[type='submit'], select, button {
+#add-btn, select {
   width: 100%;
   height: 35px;
   box-sizing: border-box;
@@ -96,28 +98,22 @@ input[type='text'], select {
 }
 
 /* Stilen för knappar */
-input[type='submit'], button {
+#add-btn {
   margin-top: 1rem;
 }
 
-button {
-  margin-bottom: 0.3rem;
-}
-
-input[type='submit'], button {
+#add-btn {
   background-color: var(--primary);
   color: var(--on-primary);
   border: none;
   border-radius: 5px;
 }
 
-input[type='submit']:hover,
-button:hover {
+#add-btn:hover {
   background-color: var(--primary-variant);
 }
 
-input[type='submit']:focus,
-button:focus {
+#add-btn:focus {
   outline: 1px double var(--on-surface);
   outline-offset: 2px;
 }
@@ -160,11 +156,21 @@ li p:first-of-type {
 }
 
 .checkbox {
+  position: relative;
+  top: -70px;
+  left: 260px;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
   flex-direction: row;
   justify-content: start;
   align-items: center;
   padding: 0;
-  margin-top: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.checkbox label {
+  font-weight: 600;
 }
 
 .checkbox input[type='checkbox'] {
@@ -173,5 +179,51 @@ li p:first-of-type {
   margin-right: 0.3rem;
   width: 25px;
   height: 25px;
+  accent-color: var(--primary-variant);
+}
+
+.todo-btn {
+  all: unset;
+  margin: 0;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-style: italic;
+  text-decoration: underline;
+  font-weight: 600;
+  color: var(--primary-variant);
+}
+
+.todo-btn:hover {
+  font-size: 1.2rem;
+}
+
+.todo-btn:focus {
+  outline: 1px double var(--primary-variant);
+  outline-offset: 2px;
+}
+
+.form-edit input[type='text'] {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--primary-variant);
+}
+
+.form-edit .error {
+  color: var(--error);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 0.5rem;
+}
+
+.completed {
+  position: relative;
+  top: -60px;
+  left: 330px;
+  background-color: var(--success);
+  color: var(--on-primary);
+  padding: 0.5rem 1rem;
   border-radius: 5px;
+  border: 2px solid var(--on-primary);
+  outline: 2px double var(--on-primary);
+  outline-offset: 5px;
 }

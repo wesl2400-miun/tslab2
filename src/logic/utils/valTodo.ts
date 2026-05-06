@@ -1,4 +1,4 @@
-import { MESSAGE } from "../refs/message.ts";
+import { ERROR } from "../refs/error.ts";
 
 const MAX_CHAR: Readonly<number> = 36;
 const MIN_CHAR: Readonly<number> = 5;
@@ -38,15 +38,15 @@ export const valTodo = (task: string,
   setMsg: (msg: string) => void)
   : boolean => {
   if(!valPrio(priority)) {
-    setMsg(MESSAGE
+    setMsg(ERROR
       .INVALID_PRIO);
     return false;
   } else if (!valTask(task)) {
-    setMsg(MESSAGE
+    setMsg(ERROR
       .INVALID_TASK);
     return false;
   } else if(!valDate(date)) {
-    setMsg(MESSAGE
+    setMsg(ERROR
       .INVALID_DATE);
     return false;
   }
