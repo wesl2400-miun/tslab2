@@ -1,4 +1,4 @@
-# Frontend-baserad webbutveckling
+# Programmering i TypeScript, DT208G
 ## Laboration 2 - Objektorienterad programmering
 
 ### Så här fungerar min lösning
